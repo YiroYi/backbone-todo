@@ -8,22 +8,26 @@ var TodoItemView = Backbone.View.extend({
 
   events: {
     "click #toogle": "onClickToggle",
+    'click #delete': "onClickDelete"
   },
 
   onClickToggle: function () {
     this.model.toggle();
+    this.model.save();
     console.log(this.model.toJSON());
   },
 
-  render: function () {
-    this.$el.toggleClass("completed", this.model.get("isCompleted"));
-    
-    var checked = this.model.get("isCompleted") ? "checked" : "";
+  onClickDelete: function () {
+    this.model.destroy();
+  },
 
-    this.$el.html(
-      `<input id='toogle' type='checkbox' ${checked}></input>` +
-        this.model.escape("description")
-    );
+  render: function () {
+    this.$el.attr("id", this.model.id);
+    this.$el.toggleClass("completed", this.model.get("completed"));
+    
+    var template = $("#todoItemTemplate").html();
+    var html = Mustache.render(template, this.model.toJSON());
+    this.$el.html(html);
 
     return this;
   },
