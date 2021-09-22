@@ -4,3 +4,7 @@ body {
 }
 
 body, p { font-size: 24px; }
+
+#todoItems li.completed {
+	text-decoration: line-through;
+}
