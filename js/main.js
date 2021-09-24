@@ -1,4 +1,17 @@
+$(document).ready(function () {
+  var todoItems = new TodoItems();
+  todoItems.fetch();
 
-// In the first few sections, we do all the coding here.
-// Later, you'll see how to organize your code into separate
-// files and modules.
+  var todoItemsView = new TodoItemsView({ model: todoItems });
+  $("body").append(todoItemsView.render().$el);
+});
+
+//$(document).ready(function () {
+//  var todoItems = new TodoItems();
+//  todoItems.fetch({
+//    success: function () {
+//      var todoItemsView = new TodoItemsView({ model: todoItems });
+//      $("body").append(todoItemsView.render().$el);
+//    },
+//  });
+//});
