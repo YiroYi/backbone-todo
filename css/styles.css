@@ -8,3 +8,11 @@ body, p { font-size: 24px; }
 #todoItems li.completed {
 	text-decoration: line-through;
 }
+
+.right-content {
+  background-color: blue;
+}
+
+.left-content {
+  background-color: yellow;
+}
